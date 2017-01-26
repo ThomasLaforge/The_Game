@@ -8,8 +8,13 @@ class Hand {
 		this._cards = cards;
 	}
 
-	addNewCard(c:Card){
-		this.cards.push(c)
+	addNewCard(cards:Card|Array<Card>){
+		if(!Array.isArray(cards)){
+			cards = [cards]	
+		}
+		cards.forEach(c => {
+			this.cards.push(c)
+		})
 	}
 
 	getNbCards(): number {

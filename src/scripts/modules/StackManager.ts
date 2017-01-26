@@ -17,6 +17,7 @@ class StackManager{
             if(!stacks){
                 stacks = Config.NB_STACKS;
             }
+            this.stacks = [];
             for (let i = 0; i < stacks; i++) {
                 let startValue:StartStackValue =  i < Number(stacks) / 2 ? StartStackValue.LOW : StartStackValue.LOW;
                 this.stacks.push(new Stack(startValue));

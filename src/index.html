@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Vendredi</title>
+    <title>The Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="libs/css/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/main.css">
@@ -19,26 +19,12 @@
     </p><![endif]-->
 
     <div class="container">
-        <h1 class="title-top">Vendredi</h1>
-
-        <hr>
+        <h1 class="title-top">The Game</h1>
 
         <div id="app">
             <game-info :game="game"></game-info>
-
-            <hr>
-
-            <game-over v-if="game.isGameOver()" :player-name="game.robinson.pseudo"></game-over>
-            <div v-if="game.isWon()">C'est gagné !</div>
-
-            <game-danger-choice v-if="( !game.fight && !game.isGameOver() && !game.isWon() )" :danger-choice="game.dangerChoiceCards" @chose="startFight"></game-danger-choice>
-
-            <game-fight v-if="(game.fight && !game.isGameOver() && !game.isWon() )" :fight="game.fight" :next-three-cards="game.getThreeFisrtFightCards()" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" @use-two-step-power="useTwoStepPower"></game-fight>
-
-            <hr>
-
-            <game-save-manager @save="save" @load="load"></game-save-manager>
-
+            <local-player :hand="hand"></local-player>
+            <action-bar @draw-card="drawCard"></action-bar>
         </div>
 
         <!-- - - - - - - - -->

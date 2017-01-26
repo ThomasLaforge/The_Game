@@ -1,8 +1,5 @@
-@import "cards";
-@import "infos";
-@import "colors";
-@import "gameover";
-@import "modal";
+@import 'card';
+
 body {
     box-sizing: border-box !important;
     // background-color: rgba(black, 0.5) !important;
@@ -12,66 +9,6 @@ body {
 h1,
 .title-top {
     text-align: center;
-}
-
-.fight-card-power-used {
-    outline: 1px solid green;
-}
-
-.game-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.game-danger-choice {
-    display: flex;
-    flex-direction: column;
-    .danger-choice-card-slots {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 25px;
-        .card-slot {
-            margin: 0 5%;
-        }
-    }
-    .danger-choice-actions {
-        display: flex;
-        justify-content: space-around;
-    }
-}
-
-.game-fight {
-    display: flex;
-    flex-direction: column;
-    .fight-danger-card-to-fight {
-        margin: auto;
-    }
-    .fight-player-interface {
-        margin-top: 30px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        .fight-danger-fight-cards,
-        .fight-danger-fight-cards-used {
-            display: flex;
-            flex-direction: column;
-            width: 38%;
-        }
-        .fight-result-info-and-actions {
-            width: 20%;
-            text-align: center;
-            #fight-danger-temporary-result {
-                font-weight: bold;
-                font-size: 20px;
-            }
-            .fight-danger-temporary-result-success {
-                color: $success;
-            }
-            .fight-danger-temporary-result-negative {
-                color: $lose;
-            }
-        }
-    }
 }
 
 .game-save-state-zone table {

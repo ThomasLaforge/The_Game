@@ -1,32 +1,39 @@
 // Libraries
-    // let bootstrap = require('bootstrap/dist/js/bootstrap');
     import * as _ from 'lodash'
 
 // Model
     import { Game } from './modules/Game';
     import { Player } from './modules/Player';
-    let players = [ new Player('A'), new Player('B'), new Player('C')]
-    let nbPlayer = players.length;
-    let newGame  = new Game(nbPlayer);
+    let newGame  = new Game();
 
 // Game Config
-    // newGame.level = 2
-    
+
 // Vue
-    // import { dangerCard }       from './Vue/dangerCard';
+    import { gameInfo }       from './Vue/gameInfo';
+    import { localPlayer }       from './Vue/localPlayer';
+    import { actionBar }       from './Vue/actionBar';
 // Main
 
 let app = new Vue({
     el: '#app',
     data: () => {
         return {
+            game : newGame,
+            hand : newGame.players[0].hand
         }
     },
-    computed: {
+    computed: {        
     },
     components:{
+        gameInfo,
+        localPlayer,
+        actionBar
     },
     methods: {
+        drawCard : function(){
+            console.log('draw card on main')
+            this.game.drawCard()
+        }
     }
 })
 

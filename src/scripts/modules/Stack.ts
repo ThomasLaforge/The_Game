@@ -15,9 +15,13 @@ class Stack {
     addCard(card:Card): boolean{
         let res:boolean = false;
         if(
-            (this.startValue === StartStackValue.LOW && this.currentCard().value < card.value)
+            (this.startValue === StartStackValue.LOW && card.value < this.currentCard().value )
             ||
-            (this.startValue === StartStackValue.HIGH && this.currentCard().value > card.value)            
+            (this.startValue === StartStackValue.HIGH && card.value > this.currentCard().value )            
+            ||
+            (this.startValue === StartStackValue.LOW && card.value === this.currentCard().value + 10 )
+            ||
+            (this.startValue === StartStackValue.HIGH && card.value === this.currentCard().value - 10 )
         ){
             this.cards.push(card);
             res = true;

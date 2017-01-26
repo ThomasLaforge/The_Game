@@ -14,19 +14,40 @@ class Game {
 	private _currentPlayer : Player;
     private _stackManager : StackManager;
 
-	constructor(players: Array<Player>|number, deck?: Deck, stacks?: StackManager, currentPlayer?:Player) {
-		if(!Array.isArray(players)){
-			let nbPlayers = players;
-			players = []; 
-			for (let pIndex = 0; pIndex < nbPlayers; pIndex++) {
-				players.push(new Player());
+	constructor(players?: Array<Player>|number, deck?: Deck, stacks?: StackManager, currentPlayer?:Player) {
+		if(players){
+			if(!Array.isArray(players)){
+				let nbPlayers = players;
+				players = []; 
+				for (let pIndex = 0; pIndex < nbPlayers; pIndex++) {
+					players.push(new Player());
+				}
 			}
 		}
-		this.players = players;	
-		
+		else{
+			players = [new Player()]
+		}
+		this.players = players;
         this.deck = deck ? deck : new Deck();
 		this.stackManager = stacks ? stacks : new StackManager();
 		this.currentPlayer = currentPlayer ? currentPlayer : this.getRandomPlayer();
+
+		this.giveInitCards();
+	}
+
+	giveInitCards(): void{
+		let nbCardsToDraw:number = 6;
+		let nbPlayers = this.getNbPlayers()
+		if(nbPlayers === 1) { 
+			nbCardsToDraw = 8; 
+		}
+		else if(nbPlayers === 2) {
+			nbCardsToDraw = 7;  
+		}
+		this.players.forEach(p => {
+			let cardsToGive = this.deck.drawCards(nbCardsToDraw)
+			p.addNewCard(cardsToGive);
+		})
 	}
 
 	// Actions

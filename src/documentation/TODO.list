@@ -1,0 +1,14 @@
+// Regles / Infos
+Pour la suite : http://ludovox.fr/the-game-revient-plus-extreme/
+
+Chaque joueur commence avec 6-8 cartes en main en fonction du nombre de joueurs, et quatre défausse des cartes 
+sont disposées sur la table: deux montrant "1" et une flèche vers le haut et deux montrant "100" et une flèche 
+vers le bas. À son tour, un joueur doit se défausser d'au moins deux cartes de sa main sur une ou plusieurs piles 
+de défausse, les cartes sur la pile 1 étant placées dans l'ordre croissant et les cartes sur la pile 100 étant 
+placées dans l'ordre décroissant. Un aspect délicat est que vous pouvez jouer une carte exactement supérieure 
+/ inférieure de 10 sur la carte du dessus de la pile de défausse, même lorsque vous auriez normalement du jouer 
+dans un ordre décroissant / croissant, par exemple, si sur la pile 100 on a un 87, vous pouvez jouer une carte 
+inférieure à 87 ou vous pouvez jouer le 97.
+
+Après avoir joué, vous remplissez votre main. Vous pouvez parler un peu sur ce que vous avez en main mais ne 
+jamais dire de valeurs précises. Si vous jouez toutes les 98 cartes vous gagnez.
