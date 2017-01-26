@@ -30,7 +30,7 @@ class Deck {
         return this.arrayDeck.length <= 0;
     }
 
-    length(){
+    getNbCards(){
         return this.arrayDeck.length;
     }
 

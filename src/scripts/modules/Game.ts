@@ -11,17 +11,79 @@ class Game {
 
     private _deck: Deck;
     private _players : Array<Player>;
-    private _stacks : StackManager;
+	private _currentPlayer : Player;
+    private _stackManager : StackManager;
 
+	constructor(players: Array<Player>|number, deck?: Deck, stacks?: StackManager, currentPlayer?:Player) {
+		if(!Array.isArray(players)){
+			let nbPlayers = players;
+			players = []; 
+			for (let pIndex = 0; pIndex < nbPlayers; pIndex++) {
+				players.push(new Player());
+			}
+		}
+		this.players = players;	
+		
+        this.deck = deck ? deck : new Deck();
+		this.stackManager = stacks ? stacks : new StackManager();
+		this.currentPlayer = currentPlayer ? currentPlayer : this.getRandomPlayer();
+	}
 
-	constructor(players: Array<Player>, deck?: Deck, stacks?: StackManager) {
-		if (!deck) { deck = new Deck(); }
-        if (!stacks) { stacks = new StackManager(); }
-        this._deck = deck;
-		this._players = players;
-		this._stacks = stacks;
+	// Actions
+	addCard(card:Card, stack:Stack){
+		let cardExists = this.currentPlayer.hand.cards.indexOf(card) !== -1;
+		let stackExists = this.stackManager.stacks.indexOf(stack) !== -1;
+		return cardExists && stackExists && this.stackManager.addCard(card, stack);
+	}
+
+	drawCard(){
+		let cardDraw = this.deck.drawOneCard();
+		this.currentPlayer.addNewCard(cardDraw);
+	}
+
+	changePlayer() : void {
+		let nextPlayerIndex = (this.players.indexOf(this.currentPlayer) + 1) % this.getNbPlayers()
+		this.currentPlayer = this.players[nextPlayerIndex]
+	}
+
+	getPlayableCards(player : Player) : Array<Card>{
+		let playerExists = this.players.indexOf(player) !== -1;
+		return playerExists ? player.getPlayableCards(this.stackManager.minValueUpStack(), this.stackManager.maxValueDownStack()) : []
+	}
+
+	// Game State
+	isLost() : boolean {
+		return this.currentPlayer.hand.cards.filter(c => {return c.isPlayable(this.stackManager.minValueUpStack(), this.stackManager.maxValueDownStack()) }).length === 0
+	}
+
+	isWon() : boolean {
+		let nbCards = 0;
+		this.players.forEach( p => {
+			nbCards += p.hand.getNbCards()
+		})
+		nbCards += this.deck.getNbCards()
+
+		return nbCards === 0;
+	}
+
+	getScore(): number {
+		let score = 0;
+
+		this.players.forEach( p => {
+			score += p.hand.getNbCards();
+		})
+		score += this.deck.getNbCards();
+
+		return score;
 	}
     
+// Getters / Setters
+	getNbPlayers(): number {
+		return this.players.length;
+	}
+	getRandomPlayer() : Player {
+		return this.players[_.random(0, this.players.length - 1)]
+	}
 
 	get deck(): Deck {
 		return this._deck;
@@ -39,13 +101,22 @@ class Game {
 		this._players = value;
 	}
 
-	get stacks(): StackManager {
-		return this._stacks;
+	get stackManager(): StackManager {
+		return this._stackManager;
 	}
 
-	set stacks(value: StackManager) {
-		this._stacks = value;
+	set stackManager(value: StackManager) {
+		this._stackManager = value;
 	}
+
+	get currentPlayer(): Player {
+		return this._currentPlayer;
+	}
+
+	set currentPlayer(value: Player) {
+		this._currentPlayer = value;
+	}
+//------------------- 
     
 
 }

@@ -12,6 +12,10 @@ class Card implements CardInterface {
         console.log(this.constructor.name, this)
     }
 
+	isPlayable(minValueUpStack: number, maxValueDownStack: number) : boolean {
+		return this.value > minValueUpStack || this.value < maxValueDownStack;
+	}
+
     get value(): number {
 		return this._value;
 	}
