@@ -23,7 +23,10 @@
 
         <div id="app">
             <game-info :game="game"></game-info>
-            <local-player :hand="hand"></local-player>
+            <hr>
+            <stack-manager :stacks="game.stackManager" @stack-selected="stackSelection"></stack-manager>
+            <hr>
+            <local-player :hand="hand" :selected-card="selectedCard" @card-selected="cardSelection"></local-player>
             <action-bar @draw-card="drawCard"></action-bar>
         </div>
 
