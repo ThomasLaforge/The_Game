@@ -19,7 +19,7 @@ class StackManager{
             }
             this.stacks = [];
             for (let i = 0; i < stacks; i++) {
-                let startValue:StartStackValue =  i < Number(stacks) / 2 ? StartStackValue.LOW : StartStackValue.LOW;
+                let startValue:StartStackValue =  i < Number(stacks) / 2 ? StartStackValue.LOW : StartStackValue.HIGH;
                 this.stacks.push(new Stack(startValue));
             }
         }
@@ -29,6 +29,7 @@ class StackManager{
 	addCard(card:Card, stack:Stack){
         let stackIndex = this.stacks.indexOf(stack);
 		let stackExists = stackIndex !== -1;
+        console.log('stackManager', stackExists)
         return stackExists && this.stacks[stackIndex].addCard(card);
 	}
 
@@ -45,8 +46,8 @@ class StackManager{
         let minValue = StartStackValue.LOW + 1;
 
         this.getUpStacks().forEach( s => {
-            if( s.currentCard().value > minValue){
-                minValue = s.currentCard().value + 1
+            if( s.currentCardValue() > minValue){
+                minValue = s.currentCardValue() + 1
             }
         })
 
@@ -57,8 +58,8 @@ class StackManager{
         let maxValue = StartStackValue.HIGH - 1;
 
         this.getDownStacks().forEach( s => {
-            if( s.currentCard().value < maxValue){
-                maxValue = s.currentCard().value - 1;
+            if( s.currentCardValue() < maxValue){
+                maxValue = s.currentCardValue() - 1;
             }
         })
 

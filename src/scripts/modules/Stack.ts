@@ -7,7 +7,7 @@ class Stack {
     private _cards?: Array<Card>;
 
 
-	constructor(startValue:StartStackValue, cards?: Array<Card>) {
+	constructor(startValue:StartStackValue, cards: Array<Card> = []) {
 		this._cards = cards;
 		this._startValue = startValue;
 	}
@@ -15,13 +15,13 @@ class Stack {
     addCard(card:Card): boolean{
         let res:boolean = false;
         if(
-            (this.startValue === StartStackValue.LOW && card.value < this.currentCard().value )
+            (this.startValue === StartStackValue.LOW && card.value > this.currentCardValue() )
             ||
-            (this.startValue === StartStackValue.HIGH && card.value > this.currentCard().value )            
+            (this.startValue === StartStackValue.HIGH && card.value < this.currentCardValue() )            
             ||
-            (this.startValue === StartStackValue.LOW && card.value === this.currentCard().value + 10 )
+            (this.startValue === StartStackValue.LOW && card.value === this.currentCardValue() + 10 )
             ||
-            (this.startValue === StartStackValue.HIGH && card.value === this.currentCard().value - 10 )
+            (this.startValue === StartStackValue.HIGH && card.value === this.currentCardValue() - 10 )
         ){
             this.cards.push(card);
             res = true;
@@ -30,10 +30,9 @@ class Stack {
         return res;
     }
 
-    currentCard() : Card{
-        return this.cards[this.cards.length - 1]
+    currentCardValue() : number {
+        return this.cards.length > 0 ? this.cards[this.cards.length - 1].value : this.startValue
     }
-
 
 	get startValue(): StartStackValue {
 		return this._startValue;

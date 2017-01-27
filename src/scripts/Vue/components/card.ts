@@ -1,5 +1,5 @@
 let template = `
-<div class="card" @click="clickCard">
+<div class="card" @click="select">
     {{card.value}}
 </div>
 `
@@ -21,9 +21,11 @@ const card = {
             console.log('draw card on action bar')
             this.$emit('draw-card');
         },
-        clickCard : function(){
-            
+        select(){
+            console.log('select a card', this.card);
+            this.$emit('select', this.card)
         }
+
     }
 };
 

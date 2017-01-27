@@ -54,6 +54,7 @@ class Game {
 	addCard(card:Card, stack:Stack){
 		let cardExists = this.currentPlayer.hand.cards.indexOf(card) !== -1;
 		let stackExists = this.stackManager.stacks.indexOf(stack) !== -1;
+		console.log('game addCard', cardExists, stackExists)
 		return cardExists && stackExists && this.stackManager.addCard(card, stack);
 	}
 
