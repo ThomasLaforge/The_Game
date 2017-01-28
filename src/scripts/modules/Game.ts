@@ -4,6 +4,7 @@
     import { Player }        from './Player';
     import { Stack }         from './Stack';
     import { StackManager }  from './StackManager';    
+    import { NbCardToGet }   from './TheGame'
     import * as _            from 'lodash'
 // -------
 
@@ -36,14 +37,7 @@ class Game {
 	}
 
 	giveInitCards(): void{
-		let nbCardsToDraw:number = 6;
-		let nbPlayers = this.getNbPlayers()
-		if(nbPlayers === 1) { 
-			nbCardsToDraw = 8; 
-		}
-		else if(nbPlayers === 2) {
-			nbCardsToDraw = 7;  
-		}
+		let nbCardsToDraw = this.getInitialHandSize();
 		this.players.forEach(p => {
 			let cardsToGive = this.deck.drawCards(nbCardsToDraw)
 			p.addNewCard(cardsToGive);
@@ -61,6 +55,12 @@ class Game {
 	drawCard(){
 		let cardDraw = this.deck.drawOneCard();
 		this.currentPlayer.addNewCard(cardDraw);
+	}
+
+	completeCurrentPlayerHand(){
+		while(this.currentPlayer.hand.getNbCards() !== this.getInitialHandSize()){
+			this.drawCard();
+		}
 	}
 
 	changePlayer() : void {
@@ -98,8 +98,25 @@ class Game {
 
 		return score;
 	}
+
+	playerCanDraw(): boolean {
+		let minimumNbCardToPlayEachTurn = this.deck.isEmpty() ? 1 : 2;
+		return this.currentPlayer.hand.cards.length <= this.getInitialHandSize() - 2;
+	}
     
 // Getters / Setters
+	getInitialHandSize(): number{
+		let nbCardsToDraw:number = NbCardToGet.AT_3_OR_MORE;
+		let nbPlayers = this.getNbPlayers()
+		if(nbPlayers === 1) { 
+			nbCardsToDraw = NbCardToGet.AT_1; 
+		}
+		else if(nbPlayers === 2) {
+			nbCardsToDraw = NbCardToGet.AT_2;  
+		}
+		return nbCardsToDraw;
+	}	
+
 	getNbPlayers(): number {
 		return this.players.length;
 	}
