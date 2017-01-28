@@ -22,12 +22,23 @@
         <h1 class="title-top">The Game</h1>
 
         <div id="app">
+            <div v-if="(!game.isLost() && !game.isWon())">
             <game-info :game="game"></game-info>
             <hr>
             <stack-manager :stacks="game.stackManager" :possible-stacks="possibleStacks" @stack-selected="stackSelection"></stack-manager>
             <hr>
             <local-player :hand="hand" :selected-card="selectedCard" @card-selected="cardSelection"></local-player>
             <action-bar :can-draw="canDraw" @draw-cards="drawCards"></action-bar>
+            </div>
+
+            <div v-if="game.isLost()">
+                GG ! Perfect score !
+            </div>
+
+            <div v-if="game.isLost()">
+                GAME OVER BITCH ! Get out the way ! <br>
+                Score : {{game.getScore()}}
+            </div>
         </div>
 
         <!-- - - - - - - - -->
