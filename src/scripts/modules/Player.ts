@@ -19,6 +19,10 @@ class Player {
 		this.hand.addNewCard(c);
 	}
 
+	removeCard(c:Card){
+		this.hand.removeCard(c);
+	}
+
 	getPlayableCards(minValueUpStack: number, maxValueDownStack: number){
 		return this.hand.cards.filter( c => { return c.isPlayable(minValueUpStack, maxValueDownStack) }); 
 	}

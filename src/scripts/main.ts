@@ -43,8 +43,7 @@ let app = new Vue({
         stackSelection(stack:Stack){
             console.log('main stack selection', stack)
             if(this.selectedCard){
-                console.log('try to add card on stack', this.selectedCard, stack, this.game.addCard(this.selectedCard, stack))
-                console.log(this.game)
+                this.game.addCard(this.selectedCard, stack)
             }
         },
         cardSelection(card:Card){

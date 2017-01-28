@@ -1,6 +1,6 @@
 let template = `
 <div class="action-bar">
-    <button @click="drawCard">Click to draw a card</button>
+    <button @click="drawCards" :disabled="!canDraw">Complete your hand</button>
 </div>
 `
 
@@ -16,9 +16,8 @@ const actionBar = {
     components : {
     },
     methods: {
-        drawCard : function(){
-            console.log('draw card on action bar')
-            this.$emit('draw-card');
+        drawCards : function(){
+            this.$emit('draw-cards');
         }
     }
 };

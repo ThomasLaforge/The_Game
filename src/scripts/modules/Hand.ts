@@ -17,15 +17,21 @@ class Hand {
 		})
 	}
 
+	removeCard(c:Card){
+		if(this.cards.indexOf(c) !== -1){
+			this.cards.splice(this.cards.indexOf(c),1)
+		}
+	}
+
 	getNbCards(): number {
 		return this.cards.length
 	}
 
-	public get cards(): Array<Card> {
+	get cards(): Array<Card> {
 		return this._cards;
 	}
 
-	public set cards(value: Array<Card>) {
+	set cards(value: Array<Card>) {
 		this._cards = value;
 	}
     
