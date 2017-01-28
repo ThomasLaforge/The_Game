@@ -127,6 +127,10 @@ class Game {
 		return this.players[_.random(0, this.players.length - 1)]
 	}
 
+	getPossibleStacks(card:Card): Array<Stack> {
+		return this.stackManager.getPossibleStacks(card);
+	}
+
 	get deck(): Deck {
 		return this._deck;
 	}

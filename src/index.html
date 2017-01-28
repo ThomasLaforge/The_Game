@@ -24,7 +24,7 @@
         <div id="app">
             <game-info :game="game"></game-info>
             <hr>
-            <stack-manager :stacks="game.stackManager" @stack-selected="stackSelection"></stack-manager>
+            <stack-manager :stacks="game.stackManager" :possible-stacks="possibleStacks" @stack-selected="stackSelection"></stack-manager>
             <hr>
             <local-player :hand="hand" :selected-card="selectedCard" @card-selected="cardSelection"></local-player>
             <action-bar :can-draw="canDraw" @draw-cards="drawCards"></action-bar>

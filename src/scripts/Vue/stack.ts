@@ -1,27 +1,33 @@
-// import { GameLevel } from '../modules/Vendredi'
+import { StartStackValue } from '../modules/TheGame'
 
-var draggable = require('vuedraggable')
 
 let template = `
-    <div class="stack" @click="select">
-        {{stackCardValue}}
+    <div class="stack">
+        <div class="stack">
+            {{ direction }}
+        </div>
+    
+        <div class="stack-card-on-top" 
+            :class="possibleStacks.indexOf(stack) !== -1 ? 'stack-playable' : '' "
+            @click="select"
+        >
+            {{stackCardValue}}
+        </div>
     </div>
 `;
 
 const stack = {
-    props : ['stack'],
+    props : ['stack', 'possibleStacks'],
     template: template,
     data : () => {
         return {
         }
     },
     components : {
-        draggable
     },
     computed : {
-        stackCardValue : function(){
-            return this.stack.currentCardValue();
-        }
+        stackCardValue : function(){ return this.stack.currentCardValue(); },
+        direction : function(){ return this.stack.startValue === StartStackValue.LOW ? 'UP' : 'DOWN'}
     },
     methods: {
         select(){

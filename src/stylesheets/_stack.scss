@@ -1,0 +1,20 @@
+$stack_dimension : 80px;
+
+.stack-card-on-top{
+    height: $stack_dimension;
+    line-height: $stack_dimension;
+    width: $stack_dimension;
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+
+    border: $stack_dimension / 20 black solid;
+    border-radius: $stack_dimension / 10;
+
+    display: inline-block;
+}
+
+.stack-playable{
+    border: $stack_dimension / 20 green solid;
+}

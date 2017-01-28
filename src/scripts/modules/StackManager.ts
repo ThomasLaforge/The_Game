@@ -34,6 +34,10 @@ class StackManager{
 	}
 
 // Getters / Setters
+    getPossibleStacks(card:Card){
+        return this.stacks.filter( stack => { return stack.canPlay(card) })
+    }
+
     getUpStacks(): Array<Stack>{
         return this.stacks.filter(s => { return s.startValue === StartStackValue.LOW})        
     }

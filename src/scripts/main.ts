@@ -4,6 +4,7 @@
 // Model
     import { Game } from './modules/Game';
     import { Player } from './modules/Player';
+    import { Hand } from './modules/Hand';
     import { Stack } from './modules/Stack';
     import { Card } from './modules/Card';
     let newGame  = new Game();
@@ -20,11 +21,12 @@
 
 let app = new Vue({
     el: '#app',
-    data: () => {
+    data: (): { game: Game, hand: Hand, selectedCard:Card, possibleStacks: Array<Stack>} => {
         return {
             game : newGame,
             hand : newGame.players[0].hand,
-            selectedCard : null
+            selectedCard : null,
+            possibleStacks : []
         }
     },
     computed: {
@@ -51,6 +53,8 @@ let app = new Vue({
         },
         cardSelection(card:Card){
             this.selectedCard = this.selectedCard === card ? null : card
+            this.possibleStacks = this.selectedCard ? this.game.getPossibleStacks(this.selectedCard) : [];
+            console.log(this.possibleStacks)
         }
     }
 })

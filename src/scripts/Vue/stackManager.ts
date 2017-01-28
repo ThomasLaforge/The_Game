@@ -4,13 +4,17 @@ import {Stack} from '../modules/Stack'
 import {stack} from './stack'
 
 let template = `
-    <div class="stack">
-        <stack v-for="stack in stacks.stacks" :stack="stack" @select="stackSelected">
+    <div class="stacks">
+        <stack v-for="stack in stacks.stacks" 
+            :stack="stack"
+            :possible-stacks="possibleStacks"
+            @select="stackSelected"
+        >
     </div>
 `;
 
 const stackManager = {
-    props : ['stacks'],
+    props : ['stacks', 'possibleStacks'],
     template: template,
     data : () => {
         return {
