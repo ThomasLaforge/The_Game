@@ -3,7 +3,7 @@ import { StartStackValue } from '../modules/TheGame'
 
 let template = `
     <div class="stack">
-        <div class="stack">
+        <div class="stack-direction">
             {{ direction }}
         </div>
     

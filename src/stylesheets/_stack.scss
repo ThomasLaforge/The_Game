@@ -1,5 +1,9 @@
 $stack_dimension : 80px;
 
+.stack{
+    display:inline-block;
+}
+
 .stack-card-on-top{
     height: $stack_dimension;
     line-height: $stack_dimension;
