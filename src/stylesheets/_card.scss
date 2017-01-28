@@ -13,3 +13,11 @@
     line-height: 150px;
     width:100px;
 }
+
+.card:active, .card:hover{
+    border-color: green;
+}
+
+.card.card-selected{
+    border-color: green;    
+}
