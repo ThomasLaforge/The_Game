@@ -1,6 +1,6 @@
 let template = `
 <div class="game-info">
-    {{nbCardsOnDeck}}
+    {{ $t('game_info.nb_cards_on_deck') }} : {{nbCardsOnDeck}}
 </div>
 `
 

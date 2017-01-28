@@ -31,15 +31,18 @@
             <action-bar :can-draw="canDraw" @draw-cards="drawCards"></action-bar>
             </div>
 
-            <div v-if="game.isLost()">
-                GG ! Perfect score !
+            <div v-if="game.isWon()">
+                {{$t('endGame.congratulation')}}
             </div>
 
             <div v-if="game.isLost()">
                 GAME OVER BITCH ! Get out the way ! <br>
                 Score : {{game.getScore()}}
             </div>
+
         </div>
+
+        
 
         <!-- - - - - - - - -->
         <!--    Scripts    -->

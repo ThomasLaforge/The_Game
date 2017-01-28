@@ -1,8 +1,8 @@
 let template = `
 <div class="action-bar">
-    <button @click="drawCards" :disabled="!canDraw">Complete your hand</button>
-    <button>Don't put cards on stack</button>
-    <button>Don't do a big step on stack</button>
+    <button @click="drawCards" :disabled="!canDraw">{{$t('actions.button.draw_card')}}</button>
+    <button>{{$t('actions.socketio_message.dont_play_on_stack')}}</button>
+    <button>{{$t('actions.socketio_message.no_big_steps')}}</button>
 </div>
 `
 

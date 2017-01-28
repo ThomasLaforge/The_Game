@@ -27,7 +27,7 @@ const stack = {
     },
     computed : {
         stackCardValue : function(){ return this.stack.currentCardValue(); },
-        direction : function(){ return this.stack.startValue === StartStackValue.LOW ? 'UP' : 'DOWN'}
+        direction : function(){ return this.stack.startValue === StartStackValue.LOW ? this.$t('stack.direction.up') : this.$t('stack.direction.down') }
     },
     methods: {
         select(){

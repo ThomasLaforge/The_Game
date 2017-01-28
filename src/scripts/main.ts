@@ -17,6 +17,14 @@
     import { actionBar }       from './Vue/actionBar';
     import { stackManager }       from './Vue/stackManager';
     
+    import * as VueI18n from 'vue-i18n'
+    Vue.use(VueI18n)
+
+    Vue.config.lang = 'fr'
+    import {locales} from './locales'
+    Object.keys(locales).forEach(function (lang) {
+        Vue.locale(lang, locales[lang])
+    })
 // Main
 
 let app = new Vue({
