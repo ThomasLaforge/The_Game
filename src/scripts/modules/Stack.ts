@@ -14,20 +14,23 @@ class Stack {
     
     addCard(card:Card): boolean{
         let res:boolean = false;
-        if(
-            (this.startValue === StartStackValue.LOW && card.value > this.currentCardValue() )
-            ||
-            (this.startValue === StartStackValue.HIGH && card.value < this.currentCardValue() )            
-            ||
-            (this.startValue === StartStackValue.LOW && card.value === this.currentCardValue() + 10 )
-            ||
-            (this.startValue === StartStackValue.HIGH && card.value === this.currentCardValue() - 10 )
-        ){
+        if( this.canPlay(card) ){
             this.cards.push(card);
             res = true;
         }
 
         return res;
+    }
+
+    canPlay(card: Card): boolean {
+        return  (this.startValue === StartStackValue.LOW && card.value > this.currentCardValue() )
+                ||
+                (this.startValue === StartStackValue.HIGH && card.value < this.currentCardValue() )            
+                ||
+                (this.startValue === StartStackValue.LOW && card.value === this.currentCardValue() - 10 )
+                ||
+                (this.startValue === StartStackValue.HIGH && card.value === this.currentCardValue() + 10 )
+
     }
 
     currentCardValue() : number {

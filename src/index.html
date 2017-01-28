@@ -27,7 +27,7 @@
             <stack-manager :stacks="game.stackManager" @stack-selected="stackSelection"></stack-manager>
             <hr>
             <local-player :hand="hand" :selected-card="selectedCard" @card-selected="cardSelection"></local-player>
-            <action-bar @draw-card="drawCard"></action-bar>
+            <action-bar :can-draw="canDraw" @draw-cards="drawCards"></action-bar>
         </div>
 
         <!-- - - - - - - - -->

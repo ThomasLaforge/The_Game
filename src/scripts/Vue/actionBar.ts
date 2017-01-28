@@ -5,6 +5,7 @@ let template = `
 `
 
 const actionBar = {
+    props : ['canDraw'],
     template : template,
     data: function(){
         return {

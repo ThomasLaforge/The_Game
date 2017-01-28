@@ -27,7 +27,8 @@ let app = new Vue({
             selectedCard : null
         }
     },
-    computed: {     
+    computed: {
+        canDraw : function(){ return this.game.playerCanDraw() } 
     },
     components:{
         gameInfo,
@@ -36,9 +37,11 @@ let app = new Vue({
         stackManager
     },
     methods: {
-        drawCard : function(){
-            console.log('draw card on main')
-            this.game.drawCard()
+        drawCards : function(){
+            if(this.canDraw){
+                this.game.completeCurrentPlayerHand();
+                this.game.changePlayer();
+            }
         },
         stackSelection(stack:Stack){
             console.log('main stack selection', stack)
