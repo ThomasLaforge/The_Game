@@ -78,7 +78,7 @@ class Game {
 
 	// Game State
 	isLost() : boolean {
-		return this.currentPlayer.hand.cards.filter(c => {return c.isPlayable(this.stackManager.minValueUpStack(), this.stackManager.maxValueDownStack()) }).length === 0
+		return this.currentPlayer.hand.cards.filter(c => {return c.isPlayable(this.stackManager.minValueUpStack(), this.stackManager.maxValueDownStack()) }).length === 0 && !this.playerCanDraw()
 	}
 
 	isWon() : boolean {
