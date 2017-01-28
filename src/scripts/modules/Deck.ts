@@ -18,7 +18,7 @@ class Deck {
     }
 
     initDeck():void{
-        for (let value = StartStackValue.LOW; value < StartStackValue.HIGH; value++) {
+        for (let value = StartStackValue.LOW + 1; value < StartStackValue.HIGH; value++) {
             this.addCard( value );
         }
         this.shuffle();
