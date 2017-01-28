@@ -4,7 +4,7 @@ export interface CardInterface {
 
 export enum StartStackValue {
     LOW = 1,
-    HIGH = 99
+    HIGH = 100
 }
 
 export enum NbCardToGet {
