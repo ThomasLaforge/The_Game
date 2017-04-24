@@ -1,8 +1,14 @@
 let template = `
-<div class="action-bar">
-    <button @click="drawCards" :disabled="!canDraw">{{$t('actions.button.draw_card')}}</button>
-    <button>{{$t('actions.socketio_message.dont_play_on_stack')}}</button>
-    <button>{{$t('actions.socketio_message.no_big_steps')}}</button>
+<div class="actionbar">
+    <button 
+        @click="drawCards" 
+        :disabled="!canDraw"
+        class="actionbar-button"
+    >
+        {{ $t('actions.button.draw_card') }}
+    </button>
+    <!-- <button>{{$t('actions.socketio_message.dont_play_on_stack')}}</button> -->
+    <!-- <button>{{$t('actions.socketio_message.no_big_steps')}}</button> -->
 </div>
 `
 

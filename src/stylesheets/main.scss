@@ -1,5 +1,6 @@
 @import 'card';
 @import 'stack';
+@import 'actionbar';
 
 body {
     box-sizing: border-box !important;
@@ -14,4 +15,12 @@ h1,
 
 .game-save-state-zone table {
     width: 100%;
+}
+
+.stacks {
+    display: flex;
+}
+
+.local-player-hand {
+    text-align: center;
 }
