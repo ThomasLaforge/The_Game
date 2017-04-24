@@ -3,7 +3,9 @@ import {Card} from '../modules/Card'
 
 let template = `
 <div class="local-player">
-    <card v-for="card in hand.cards" :card="card" @select="cardSelection" :class="selectedCard === card ? 'card-selected': '' "/>  
+    <div class="local-player-hand">
+        <card v-for="card in hand.cards" :card="card" @select="cardSelection" :class="selectedCard === card ? 'card-selected': '' "/>  
+    </div>
 </div>
 `
 

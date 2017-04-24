@@ -1,9 +1,3 @@
 {
-    "typescript.tsdk": "./node_modules/typescript/lib",
-    // settings.json
-    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
-    "terminal.integrated.shellArgs.windows": [
-        "/k",
-        "C:\\Program Files\\Git\\bin\\bash.exe"
-    ]
+    "typescript.tsdk": "./node_modules/typescript/lib"
 }

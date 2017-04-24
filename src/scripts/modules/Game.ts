@@ -45,7 +45,7 @@ class Game {
 	}
 
 	// Actions
-	addCard(card:Card, stack:Stack){
+	addCard(card:Card, stack:Stack) : boolean {
 		let cardExists = this.currentPlayer.hand.cards.indexOf(card) !== -1;
 		let stackExists = this.stackManager.stacks.indexOf(stack) !== -1;
 		let cardAdded = this.stackManager.addCard(card, stack);
